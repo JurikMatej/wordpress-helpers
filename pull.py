@@ -50,6 +50,10 @@ for arg in sys.argv[1:]:
     if flag.group(1) in args.keys():
       args[flag.group(1)] = flag.group(2)
 
+args['dir'] = args['dir'].replace('_S_', ' ')
+# Change dir to dest
+os.chdir(args['dir'])
+
 # Connect to ftp with given credentials and download theme's files
 print('Logging in..')
 with FTP(args['host'], args['user'], args['passwd'], timeout=60) as ftp:
