@@ -5,7 +5,7 @@
 
 ## Usage
 ```bash
-python pull.py --host=ftp-host --user=*ftp-user* --passwd=*ftp-passwd* --theme==*theme-name* --dir=`*save-directory*
+python pull.py --host="ftp-host" --user=*ftp-user* --passwd=*ftp-passwd* --theme==*theme-name* --dir=*save-directory*
 ```
 
 * Flags which's names do not match those specified above will be ignored
