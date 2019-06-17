@@ -29,6 +29,7 @@ def downloadFile(file, _isDir):
   except Exception as e:
     print(str(e))
 
+
 # Get default arguments
 with open('defaults.json', 'r') as defaults:
   print('Loading default arguments..')
@@ -36,6 +37,9 @@ with open('defaults.json', 'r') as defaults:
 
 # Default save dir
 args['dir'] = os.getcwd()
+# Get theme name
+themeName = str(args['theme'])[::-1]
+themeName = themeName[:themeName.find('/')][::-1]
 
 # Overwrite default args if any were specified via flags
 print('Parsing flags...')
@@ -49,17 +53,17 @@ for arg in sys.argv[1:]:
 # Connect to ftp with given credentials and download theme's files
 print('Logging in..')
 with FTP(args['host'], args['user'], args['passwd'], timeout=60) as ftp:
-  ftp.cwd('web/wp-main/wp-content/themes/' + str(args['theme']))
+  ftp.cwd(str(args['theme']))
   
-  if os.path.exists(args['theme']):
+  if os.path.exists(themeName):
     print('Overwriting existing files')
     from shutil import rmtree
-    rmtree(args['theme'])
-    os.mkdir(args['theme'])
+    rmtree(themeName)
+    os.mkdir(themeName)
   else:
-    os.mkdir(args['theme'])
+    os.mkdir(themeName)
     
-  os.chdir(args['theme'])
+  os.chdir(themeName)
 
   print('Downloading...')
   for file in ftp.nlst()[2:]: 
