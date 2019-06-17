@@ -34,6 +34,12 @@ def downloadFile(file, _isDir):
 with open('defaults.json', 'r') as defaults:
   print('Loading default arguments..')
   args = json.loads(defaults.read())
+# Config
+args['host']  = args['auth']['host']
+args['user']  = args['auth']['user']
+args['passwd'] = args['auth']['passwd']
+args['dir']   = args['pull']['dir']
+args['theme'] = args['pull']['theme']
 
 # Default save dir
 args['dir'] = os.getcwd()

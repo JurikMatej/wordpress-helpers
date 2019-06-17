@@ -1,7 +1,15 @@
 {
-  "host": "",
-  "user": "",
-  "passwd": "",
-  "theme": "",
-  "dir": ""
+  "auth": {
+    "host": "",
+    "user": "",
+    "passwd": ""
+  },
+  "pull": {
+    "dir": "",
+    "theme": ""  
+  },
+  "push": {
+    "files": [],
+    "theme": ""
+  }
 }
